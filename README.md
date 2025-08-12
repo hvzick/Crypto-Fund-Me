@@ -1,66 +1,57 @@
-## Foundry
+# Fund Me Dapp (Sepolia)
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+This project is a full-stack decentralized application (dapp) for crowdfunding using Ethereum smart contracts. It leverages [Foundry](https://book.getfoundry.sh/) for Solidity development, testing, and deployment, and includes a minimalistic HTML/JavaScript frontend for interacting with the contract.
 
-Foundry consists of:
+## Overview
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+- **Smart Contract:** `FundMe.sol` allows users to fund the contract with ETH, tracks funders, and enables the owner to withdraw funds. It uses Chainlink price feeds to enforce a minimum funding amount in USD.
+- **Frontend:** Located in `html-crypto-fund-me/`, the frontend lets users connect their wallet (e.g., MetaMask), fund the contract, and view contract status.
+- **Deployment:** The contract is deployed on the Sepolia Ethereum testnet.
 
-## Documentation
+## 🚀 Live Sepolia Contract
 
-https://book.getfoundry.sh/
+- **FundMe Contract Address:** [`0xb4C2B2535B12598e4832A0797874B30739Ad0F94`](https://sepolia.etherscan.io/address/0xb4C2B2535B12598e4832A0797874B30739Ad0F94)
+- **Network:** Sepolia Testnet
 
-## Usage
+You can interact with this contract using the provided frontend or directly via Etherscan.
 
-### Build
+## Quick Start
 
-```shell
-$ forge build
+### 1. Build & Test Contracts
+
+```bash
+forge build
+forge test
 ```
 
-### Test
+### 2. Deploy to Sepolia
 
-```shell
-$ forge test
+Set your environment variables in a `.env` file (see Makefile for required variables), then:
+
+```bash
+make deploy-sepolia
 ```
 
-### Format
+### 3. Frontend Usage
 
-```shell
-$ forge fmt
-```
+Open `html-crypto-fund-me/index.html` in your browser. Connect your wallet (MetaMask, Sepolia network), and interact with the contract at `0xb4C2B2535B12598e4832A0797874B30739Ad0F94`.
 
-### Gas Snapshots
+## Project Structure
 
-```shell
-$ forge snapshot
-```
+- `src/` — Solidity contracts (main: `FundMe.sol`)
+- `script/` — Deployment and interaction scripts
+- `test/` — Foundry tests
+- `html-crypto-fund-me/` — Frontend (HTML/JS)
+- `Makefile` — Build, test, and deploy automation
 
-### Anvil
+## Foundry Toolkit
 
-```shell
-$ anvil
-```
+- **Forge:** Testing framework
+- **Cast:** CLI for contract interaction
+- **Anvil:** Local Ethereum node
 
-### Deploy
+See [Foundry Book](https://book.getfoundry.sh/) for full documentation.
 
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
+---
 
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+**Demo Contract:** [0xb4C2B2535B12598e4832A0797874B30739Ad0F94](https://sepolia.etherscan.io/address/0xb4C2B2535B12598e4832A0797874B30739Ad0F94) (Sepolia)
